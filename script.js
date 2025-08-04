@@ -965,12 +965,37 @@ class VisitorCounter {
     }
 }
 
+// Fonction de détection mobile
+function isMobileDevice() {
+    return window.innerWidth <= 768 || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Supprimer le compteur sur mobile
+function removeVisitorCounterOnMobile() {
+    if (isMobileDevice()) {
+        const counter = document.getElementById('visitor-counter');
+        if (counter) {
+            counter.remove();
+            console.log('📱 Compteur de visiteurs supprimé sur mobile');
+        }
+    }
+}
+
 // Initialiser tous les effets quand la page est chargée
 window.addEventListener('load', () => {
     initializeVisualEffects();
     initParallax();
     enhancedScrollAnimations();
     
-    // Initialiser le compteur de visiteurs
-    new VisitorCounter();
+    // Supprimer le compteur sur mobile
+    removeVisitorCounterOnMobile();
+    
+    // Initialiser le compteur de visiteurs seulement sur desktop
+    if (!isMobileDevice()) {
+        new VisitorCounter();
+        console.log('🖥️ Compteur de visiteurs initialisé sur desktop');
+    } else {
+        console.log('📱 Compteur de visiteurs désactivé sur mobile');
+    }
 });
