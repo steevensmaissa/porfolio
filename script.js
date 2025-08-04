@@ -867,14 +867,110 @@ function generateCV() {
 // Initialize CV download functionality
 document.addEventListener('DOMContentLoaded', function() {
     const cvButton = document.getElementById('download-cv');
-    if (cvButton) {
-        cvButton.addEventListener('click', generateCV);
-    }
 });
+
+// Système de compteur de visiteurs
+class VisitorCounter {
+    constructor() {
+        this.storageKeys = {
+            totalVisits: 'portfolio_total_visits',
+            uniqueVisits: 'portfolio_unique_visits', 
+            lastVisit: 'portfolio_last_visit',
+            todayVisits: 'portfolio_today_visits',
+            visitDate: 'portfolio_visit_date'
+        };
+        this.init();
+    }
+
+    init() {
+        this.updateVisitCounts();
+        this.displayCounts();
+        this.startCounterAnimation();
+    }
+
+    updateVisitCounts() {
+        const now = new Date();
+        const today = now.toDateString();
+        const lastVisitDate = localStorage.getItem(this.storageKeys.visitDate);
+        
+        // Incrémenter visites totales
+        let totalVisits = parseInt(localStorage.getItem(this.storageKeys.totalVisits)) || 0;
+        totalVisits++;
+        localStorage.setItem(this.storageKeys.totalVisits, totalVisits);
+
+        // Gérer visiteurs uniques (basé sur localStorage + session)
+        let uniqueVisits = parseInt(localStorage.getItem(this.storageKeys.uniqueVisits)) || 0;
+        const isNewSession = !sessionStorage.getItem('portfolio_session');
+        if (isNewSession) {
+            uniqueVisits++;
+            localStorage.setItem(this.storageKeys.uniqueVisits, uniqueVisits);
+            sessionStorage.setItem('portfolio_session', 'active');
+        }
+
+        // Gérer visites du jour
+        let todayVisits = parseInt(localStorage.getItem(this.storageKeys.todayVisits)) || 0;
+        if (lastVisitDate !== today) {
+            // Nouveau jour, reset compteur
+            todayVisits = 1;
+            localStorage.setItem(this.storageKeys.visitDate, today);
+        } else {
+            todayVisits++;
+        }
+        localStorage.setItem(this.storageKeys.todayVisits, todayVisits);
+
+        this.counts = {
+            total: totalVisits,
+            unique: uniqueVisits,
+            today: todayVisits
+        };
+    }
+
+    displayCounts() {
+        const totalElement = document.getElementById('total-visits');
+        const uniqueElement = document.getElementById('unique-visits');
+        const todayElement = document.getElementById('today-visits');
+
+        if (totalElement) this.animateNumber(totalElement, this.counts.total);
+        if (uniqueElement) this.animateNumber(uniqueElement, this.counts.unique);
+        if (todayElement) this.animateNumber(todayElement, this.counts.today);
+    }
+
+    animateNumber(element, targetNumber) {
+        const duration = 1500;
+        const startNumber = 0;
+        const increment = targetNumber / (duration / 16);
+        let currentNumber = startNumber;
+
+        const timer = setInterval(() => {
+            currentNumber += increment;
+            if (currentNumber >= targetNumber) {
+                currentNumber = targetNumber;
+                clearInterval(timer);
+                element.classList.add('updating');
+                setTimeout(() => element.classList.remove('updating'), 600);
+            }
+            element.textContent = Math.floor(currentNumber).toLocaleString('fr-FR');
+        }, 16);
+    }
+
+    startCounterAnimation() {
+        // Animation d'entrée du compteur
+        setTimeout(() => {
+            const counter = document.getElementById('visitor-counter');
+            if (counter) {
+                counter.style.opacity = '0.8';
+                counter.style.transform = 'translateY(0)';
+            }
+        }, 1000);
+    }
+}
 
 // Initialiser tous les effets quand la page est chargée
 window.addEventListener('load', () => {
     initializeVisualEffects();
     initParallax();
     enhancedScrollAnimations();
+    
+    // Initialiser le compteur de visiteurs
+    new VisitorCounter();
 });
