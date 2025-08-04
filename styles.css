@@ -228,14 +228,17 @@ body {
 /* Responsive mobile - Compteur masqué */
 @media (max-width: 768px) {
     .visitor-counter {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
-
 }
 
 @media (max-width: 480px) {
     .visitor-counter {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
 }
 
