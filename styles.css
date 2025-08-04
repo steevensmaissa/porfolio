@@ -148,6 +148,137 @@ body {
     border-radius: 2px;
 }
 
+/* Compteur de visiteurs */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.visitor-counter:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 180px;
+}
+
+.counter-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+.counter-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.counter-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.counter-number {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-color);
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.counter-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Animation du compteur */
+.counter-number.updating {
+    animation: counterPulse 0.6s ease;
+}
+
+@keyframes counterPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+    .visitor-counter {
+        left: 10px;
+        bottom: 10px;
+        padding: 12px;
+        min-width: 160px;
+    }
+    
+    .counter-container {
+        gap: 8px;
+    }
+    
+    .counter-number {
+        font-size: 14px;
+    }
+    
+    .counter-label {
+        font-size: 10px;
+    }
+    
+    .counter-icon {
+        font-size: 16px;
+        width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .visitor-counter {
+        position: fixed;
+        bottom: 80px;
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+    
+    .counter-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 5px;
+    }
+    
+    .counter-item {
+        flex: 1;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+    
+    .counter-details {
+        align-items: center;
+    }
+}
+
 /* Animations keyframes */
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
