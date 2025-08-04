@@ -2234,14 +2234,29 @@ section {
 
 /* Mobile Ultra Small Screens */
 @media (max-width: 480px) {
+    /* Hero encore plus compact sur petits écrans */
+    .hero-content {
+        padding: 0.5rem 0;
+        gap: 1rem;
+    }
+    
+    .image-placeholder {
+        width: 180px;
+        height: 180px;
+        top: -30px;
+        margin-bottom: 0.5rem;
+    }
+    
     /* Typography */
     .hero-title {
         font-size: 1.8rem;
         line-height: 1.2;
+        margin-top: -10px;
     }
     
     .hero-subtitle {
         font-size: 1rem;
+        margin-top: -5px;
     }
 
     .section-title {
