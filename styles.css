@@ -2646,4 +2646,127 @@ section {
 .cloud-provider i {
     font-size: 1.1rem;
 }
+
+/* Partnership Badges Premium Styles */
+.partnership-badges {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.partner-badge i {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.orange-badge {
+    background: linear-gradient(45deg, rgba(255, 102, 0, 0.15), rgba(255, 140, 0, 0.1));
+    border: 2px solid #ff6600;
+    color: #ff6600;
+}
+
+.orange-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.orange-badge:hover::before {
+    left: 100%;
+}
+
+.orange-badge:hover {
+    background: linear-gradient(45deg, rgba(255, 102, 0, 0.25), rgba(255, 140, 0, 0.2));
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+    border-color: #ff8c00;
+    color: #ff8c00;
+}
+
+.capgemini-badge {
+    background: linear-gradient(45deg, rgba(0, 123, 191, 0.15), rgba(0, 160, 220, 0.1));
+    border: 2px solid #007bbf;
+    color: #007bbf;
+}
+
+.capgemini-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.capgemini-badge:hover::before {
+    left: 100%;
+}
+
+.capgemini-badge:hover {
+    background: linear-gradient(45deg, rgba(0, 123, 191, 0.25), rgba(0, 160, 220, 0.2));
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 123, 191, 0.4);
+    border-color: #0099cc;
+    color: #0099cc;
+}
+
+/* Responsive adjustments for partnership badges */
+@media (max-width: 768px) {
+    .partnership-badges {
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+    
+    .partner-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        gap: 0.5rem;
+    }
+    
+    .partner-badge i {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .partnership-badges {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .partner-badge {
+        justify-content: center;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}
 }
