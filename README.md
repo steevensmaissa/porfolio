@@ -258,12 +258,11 @@ Ce projet est libre d'utilisation pour vos portfolios personnels et professionne
 
 ---
 
-**Créé avec ❤️ pour Steeven's MAÏSSA MATSIENDI**
+**Créé avec ❤️ pour Steeven's **
 
-📧 Email : steevensmaissa@gmail.com  
-📱 Téléphone : 07 58 19 94 94  
-💼 LinkedIn : [https://www.linkedin.com/in/steeven-s-maïssa-973404127/](https://www.linkedin.com/in/steeven-s-maïssa-973404127/)
-
+📧 Email :  
+📱 Téléphone : 
+💼 LinkedIn : 
 ---
 
 *Portfolio généré automatiquement - Personnalisez selon vos besoins !*
