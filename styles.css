@@ -383,29 +383,32 @@ body {
 .image-placeholder {
     width: 320px;
     height: 320px;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(10px);
-    border: 4px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 6px solid rgba(255, 255, 255, 0.8);
     animation: float 6s ease-in-out infinite;
     box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        0 0 20px rgba(99, 102, 241, 0.3),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(99, 102, 241, 0.4),
+        0 0 60px rgba(139, 92, 246, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.2);
     position: relative;
     overflow: hidden;
     transition: var(--transition);
 }
 
 .image-placeholder:hover {
-    border-color: var(--primary-color);
+    border-color: rgba(255, 255, 255, 1);
     box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(99, 102, 241, 0.5),
-        inset 0 0 25px rgba(255, 255, 255, 0.2);
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(99, 102, 241, 0.6),
+        0 0 80px rgba(139, 92, 246, 0.3),
+        inset 0 0 40px rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px) scale(1.02);
 }
 
 .image-placeholder::before {
@@ -435,13 +438,15 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    filter: contrast(1.1) brightness(1.1);
+    filter: contrast(1.3) brightness(1.2) saturate(1.1) sharp(2px);
     transition: var(--transition);
+    position: relative;
+    z-index: 1;
 }
 
 .cyber-avatar:hover .profile-photo {
-    filter: contrast(1.2) brightness(1.2) saturate(1.1);
-    transform: scale(1.05);
+    filter: contrast(1.4) brightness(1.3) saturate(1.2) sharp(3px);
+    transform: scale(1.03);
 }
 
 .scan-line {
@@ -449,32 +454,35 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00ff00, transparent);
-    animation: scan 3s ease-in-out infinite;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.8), transparent);
+    animation: scan 4s ease-in-out infinite;
     z-index: 2;
+    opacity: 0.7;
 }
 
 .cyber-overlay {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.8);
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    background: rgba(99, 102, 241, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
-    border: 2px solid var(--primary-color);
+    border: 3px solid rgba(255, 255, 255, 0.8);
     z-index: 3;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
 .cyber-badge {
-    color: var(--primary-color);
-    font-size: 1.5rem;
+    color: white;
+    font-size: 1.3rem;
     animation: pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 @keyframes scan {
@@ -2054,6 +2062,11 @@ section {
         width: 200px;
         height: 200px;
         margin: 0 auto;
+        border-width: 4px;
+    }
+    
+    .profile-photo {
+        filter: contrast(1.4) brightness(1.3) saturate(1.2);
     }
     
     /* About Section Mobile */
@@ -2333,6 +2346,18 @@ section {
     .image-placeholder {
         width: 150px;
         height: 150px;
+        border-width: 3px;
+    }
+    
+    .cyber-overlay {
+        width: 35px;
+        height: 35px;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .cyber-badge {
+        font-size: 1rem;
     }
 }
 
