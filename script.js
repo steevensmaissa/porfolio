@@ -759,20 +759,22 @@ function generateCV() {
     
     // Configure PDF options
     const opt = {
-        margin: [10, 10, 10, 10],
+        margin: [5, 5, 5, 5],
         filename: 'CV-Steeven-MAISSA-MATSIENDI.pdf',
         image: { 
             type: 'jpeg', 
-            quality: 0.98 
+            quality: 0.95 
         },
         html2canvas: { 
-            scale: 1.5,
+            scale: 2,
             useCORS: true,
             allowTaint: true,
             backgroundColor: '#ffffff',
-            logging: true,
-            width: 794,
-            height: 1123
+            logging: false,
+            width: 800,
+            height: 1130,
+            dpi: 300,
+            letterRendering: true
         },
         jsPDF: { 
             unit: 'mm', 
@@ -780,7 +782,10 @@ function generateCV() {
             orientation: 'portrait',
             compress: true
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        pagebreak: { 
+            mode: ['avoid-all', 'css', 'legacy'],
+            before: '.cv-section-modern'
+        }
     };
     
     // Show template for rendering
@@ -793,6 +798,8 @@ function generateCV() {
     cvTemplate.style.zIndex = '9999';
     cvTemplate.style.backgroundColor = '#ffffff';
     cvTemplate.style.overflow = 'visible';
+    cvTemplate.style.transform = 'scale(1)';
+    cvTemplate.style.transformOrigin = 'top left';
     
     // Wait a bit for rendering
     setTimeout(() => {
