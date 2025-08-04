@@ -334,10 +334,19 @@ body {
     transition: var(--transition);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
     cursor: pointer;
     font-size: 0.9rem;
+    min-width: 160px;
+    white-space: nowrap;
+}
+
+.cv-button:disabled {
+    cursor: wait;
+    opacity: 0.8;
+    transform: none;
 }
 
 .cv-button:hover {
@@ -1977,6 +1986,14 @@ section {
         backdrop-filter: blur(10px);
         background: linear-gradient(45deg, #10b981, #059669);
         border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        min-width: 140px;
+        text-align: center;
+    }
+    
+    .cv-button:disabled {
+        cursor: wait;
+        opacity: 0.8;
     }
     
     .cta-button {
@@ -2280,6 +2297,7 @@ section {
         font-size: 0.75rem;
         bottom: 15px;
         right: 15px;
+        min-width: 120px;
     }
 
     /* Skills Grid */

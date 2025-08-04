@@ -805,18 +805,53 @@ function generateCV() {
     setTimeout(() => {
         console.log('🔄 Début de génération PDF...');
         
-        // Generate PDF
-        html2pdf().set(opt).from(cvTemplate).save().then(() => {
-            // Hide template and restore button
+        // Generate PDF with preview
+        html2pdf().set(opt).from(cvTemplate).outputPdf('blob').then((pdfBlob) => {
+            // Create blob URL for preview
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+            
+            // Open PDF in new tab for preview
+            const previewWindow = window.open(pdfUrl, '_blank');
+            
+            // Update button to show preview opened
+            cvButton.innerHTML = '<i class="fas fa-eye"></i> CV ouvert...';
+            
+            // Wait a bit then trigger download
+            setTimeout(() => {
+                // Create download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = pdfUrl;
+                downloadLink.download = 'CV-Steeven-MAISSA-MATSIENDI.pdf';
+                
+                // Trigger download
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                
+                // Clean up
+                setTimeout(() => {
+                    URL.revokeObjectURL(pdfUrl);
+                }, 1000);
+                
+                // Update button to show download completed
+                cvButton.innerHTML = '<i class="fas fa-check"></i> Téléchargé !';
+                
+                // Restore button after delay
+                setTimeout(() => {
+                    cvButton.innerHTML = originalText;
+                    cvButton.disabled = false;
+                }, 2000);
+                
+                console.log('✅ CV ouvert et téléchargé avec succès !');
+            }, 1500); // Wait 1.5s for user to see the preview
+            
+            // Hide template and restore position
             cvTemplate.style.display = 'none';
             cvTemplate.style.position = 'absolute';
             cvTemplate.style.left = '-9999px';
             cvTemplate.style.top = '-9999px';
             cvTemplate.style.zIndex = '';
-            cvButton.innerHTML = originalText;
-            cvButton.disabled = false;
             
-            console.log('✅ CV téléchargé avec succès !');
         }).catch((error) => {
             console.error('❌ Erreur lors de la génération du CV:', error);
             cvTemplate.style.display = 'none';
