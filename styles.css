@@ -2001,8 +2001,10 @@ section {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
-        padding: 2rem 0;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .hero-title {
@@ -2025,12 +2027,21 @@ section {
         max-width: 280px;
     }
     
-    /* Image placeholder mobile */
+    /* Image placeholder mobile - remontée pour visibilité */
     .image-placeholder {
         width: 200px;
         height: 200px;
-        margin: 0 auto;
+        margin: 0 auto 1rem auto;
         border-width: 4px;
+        order: -1;
+        position: relative;
+        top: -20px;
+    }
+    
+    /* Container de l'image pour meilleur contrôle */
+    .cyber-avatar {
+        order: -1;
+        margin-bottom: 1rem;
     }
     
     .profile-photo {
