@@ -1949,9 +1949,7 @@ section {
         z-index: 1000;
     }
     
-    .cta-button {
-        display: block;
-    }
+
     
     .nav-menu {
         position: fixed;
