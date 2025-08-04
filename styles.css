@@ -2000,9 +2000,11 @@ section {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 1.5rem;
-        padding: 1rem 0;
+        padding: 1.5rem 0 2rem 0;
         display: flex;
         flex-direction: column;
+        min-height: auto;
+        overflow: visible;
     }
 
     .hero-title {
@@ -2033,7 +2035,7 @@ section {
         border-width: 4px;
         order: -1;
         position: relative;
-        top: -20px;
+        top: -10px;
     }
     
     /* Container de l'image pour meilleur contrôle */
@@ -2232,29 +2234,43 @@ section {
 
 /* Mobile Ultra Small Screens */
 @media (max-width: 480px) {
-    /* Hero encore plus compact sur petits écrans */
+    /* Hamburger toujours visible */
+    .hamburger {
+        display: flex !important;
+        z-index: 1001;
+    }
+    
+    /* Hero section fixée pour petits écrans */
     .hero-content {
-        padding: 0.5rem 0;
-        gap: 1rem;
+        padding: 1rem 0 2rem 0;
+        gap: 1.5rem;
+        min-height: auto;
+        overflow: visible;
     }
     
     .image-placeholder {
         width: 180px;
         height: 180px;
-        top: -30px;
-        margin-bottom: 0.5rem;
+        top: 0px;
+        margin: 0 auto 1rem auto;
+        position: static;
     }
     
-    /* Typography */
+    .cyber-avatar {
+        margin-bottom: 1rem;
+        position: static;
+    }
+    
+    /* Typography sans marges négatives */
     .hero-title {
         font-size: 1.8rem;
         line-height: 1.2;
-        margin-top: -10px;
+        margin-top: 0;
     }
     
     .hero-subtitle {
         font-size: 1rem;
-        margin-top: -5px;
+        margin-top: 0;
     }
 
     .section-title {
