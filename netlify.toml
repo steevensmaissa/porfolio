@@ -1,0 +1,35 @@
+[build]
+  publish = "."
+  command = "echo 'Portfolio statique prêt'"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';"
+
+[[redirects]]
+  from = "/cv"
+  to = "/index.html#experience"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/index.html#contact"
+  status = 301
+
+[[redirects]]
+  from = "/projets"
+  to = "/index.html#projets"
+  status = 301
+
+[dev]
+  command = "npx live-server --port=8888"
+  port = 8888
+  targetPort = 8888

@@ -1,0 +1,35 @@
+{
+  "name": "portfolio-steeven-maissa-matsiendi",
+  "version": "1.0.0",
+  "description": "Portfolio professionnel moderne pour Steeven's MAÏSSA MATSIENDI",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000 || php -S localhost:8000 || npx live-server",
+    "serve": "npx live-server --port=8000 --open=/",
+    "build": "echo 'Portfolio prêt pour la production'",
+    "deploy": "echo 'Déployez les fichiers index.html, styles.css, script.js sur votre hébergeur'"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "steeven-maissa",
+    "developer",
+    "responsive",
+    "modern"
+  ],
+  "author": "Steeven's MAÏSSA MATSIENDI",
+  "license": "MIT",
+  "homepage": "https://www.linkedin.com/in/steeven-s-maïssa-973404127/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steeven-maissa/portfolio.git"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
