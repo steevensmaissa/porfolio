@@ -757,53 +757,49 @@ function generateCV() {
     cvButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Génération...';
     cvButton.disabled = true;
     
-    // Configure PDF options
+    // Configure PDF options - Version simple qui fonctionne
     const opt = {
-        margin: [5, 5, 5, 5],
+        margin: 0.5,
         filename: 'CV-Steeven-MAISSA-MATSIENDI.pdf',
         image: { 
             type: 'jpeg', 
-            quality: 0.95 
+            quality: 0.98 
         },
         html2canvas: { 
             scale: 2,
-            useCORS: true,
-            allowTaint: true,
             backgroundColor: '#ffffff',
-            logging: false,
-            width: 800,
-            height: 1130,
-            dpi: 300,
-            letterRendering: true
+            logging: true
         },
         jsPDF: { 
-            unit: 'mm', 
-            format: 'a4', 
-            orientation: 'portrait',
-            compress: true
-        },
-        pagebreak: { 
-            mode: ['avoid-all', 'css', 'legacy'],
-            before: '.cv-section-modern'
+            unit: 'in', 
+            format: 'letter', 
+            orientation: 'portrait'
         }
     };
     
-    // Show template for rendering
+    // Show template for rendering - Version simplifiée
     cvTemplate.style.display = 'block';
-    cvTemplate.style.position = 'fixed';
+    cvTemplate.style.position = 'absolute';
     cvTemplate.style.left = '0';
     cvTemplate.style.top = '0';
-    cvTemplate.style.width = '210mm';
-    cvTemplate.style.height = 'auto';
     cvTemplate.style.zIndex = '9999';
-    cvTemplate.style.backgroundColor = '#ffffff';
-    cvTemplate.style.overflow = 'visible';
-    cvTemplate.style.transform = 'scale(1)';
-    cvTemplate.style.transformOrigin = 'top left';
+    cvTemplate.style.visibility = 'visible';
     
-    // Wait a bit for rendering
+    // Wait more time for rendering and force visibility
     setTimeout(() => {
         console.log('🔄 Début de génération PDF...');
+        console.log('📋 Template trouvé:', cvTemplate);
+        console.log('📏 Dimensions template:', cvTemplate.offsetWidth, 'x', cvTemplate.offsetHeight);
+        
+        // Force all styles to be visible for PDF
+        const allElements = cvTemplate.querySelectorAll('*');
+        allElements.forEach(el => {
+            el.style.visibility = 'visible';
+            el.style.opacity = '1';
+        });
+        
+        // Add generating class for visibility
+        cvTemplate.classList.add('generating');
         
         // Generate PDF with preview
         html2pdf().set(opt).from(cvTemplate).outputPdf('blob').then((pdfBlob) => {
@@ -846,6 +842,7 @@ function generateCV() {
             }, 1500); // Wait 1.5s for user to see the preview
             
             // Hide template and restore position
+            cvTemplate.classList.remove('generating');
             cvTemplate.style.display = 'none';
             cvTemplate.style.position = 'absolute';
             cvTemplate.style.left = '-9999px';
@@ -854,6 +851,7 @@ function generateCV() {
             
         }).catch((error) => {
             console.error('❌ Erreur lors de la génération du CV:', error);
+            cvTemplate.classList.remove('generating');
             cvTemplate.style.display = 'none';
             cvTemplate.style.position = 'absolute';
             cvTemplate.style.left = '-9999px';

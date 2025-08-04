@@ -324,36 +324,7 @@ body {
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
 }
 
-.cv-button {
-    background: linear-gradient(45deg, #10b981, #059669);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
-    border: none;
-    font-weight: 600;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    cursor: pointer;
-    font-size: 0.9rem;
-    min-width: 160px;
-    white-space: nowrap;
-}
 
-.cv-button:disabled {
-    cursor: wait;
-    opacity: 0.8;
-    transform: none;
-}
-
-.cv-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-    background: linear-gradient(45deg, #059669, #047857);
-}
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.1);
@@ -1978,26 +1949,8 @@ section {
         z-index: 1000;
     }
     
-    .cv-button {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-        border-radius: 25px;
-        box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
-        backdrop-filter: blur(10px);
-        background: linear-gradient(45deg, #10b981, #059669);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease;
-        min-width: 140px;
-        text-align: center;
-    }
-    
-    .cv-button:disabled {
-        cursor: wait;
-        opacity: 0.8;
-    }
-    
     .cta-button {
-        display: none;
+        display: block;
     }
     
     .nav-menu {
@@ -2292,13 +2245,7 @@ section {
         font-size: 0.9rem;
     }
     
-    .cv-button {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.75rem;
-        bottom: 15px;
-        right: 15px;
-        min-width: 120px;
-    }
+
 
     /* Skills Grid */
     .skill-items {
@@ -2379,13 +2326,7 @@ section {
     }
 }
 
-/* CV Template - Amélioration PDF */
-.cv-template {
-    font-smoothing: antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
+
 
 .cv-page {
     print-color-adjust: exact;
